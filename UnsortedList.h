@@ -1,12 +1,11 @@
 #ifndef UNSORTEDLIST_H 
 #define UNSORTEDLIST_H 
 #include<string>
+
 class FullList {
 };
-
 class EmptyList
 {};
-
 class DuplicateItem
 {};
 class OutofBound
@@ -59,10 +58,10 @@ private:
 	int Max_Items;
 	int length;
 	// Function: Returns the index of element item
-   //pre: list is initialized
-  // post: If item is in the list then function value =  
-  //       index of item.
-  //       If item is not in the list -1 is returned
+   	//pre: list is initialized
+  	// post: If item is in the list then function value =  
+  	//       index of item.
+  	//       If item is not in the list -1 is returned
 	int findIndex(ItemType item) const;
 };
 
