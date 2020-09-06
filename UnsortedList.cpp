@@ -61,27 +61,48 @@ bool UnsortedList<ItemType>::isFull() const
 }
 
 template <class ItemType>
-void UnsortedList<ItemType>::putItem(ItemType newItem)
-{
+void UnsortedList<ItemType>::putItem(ItemType newItem) {
+    if (this->isFull()) {
+        throw FullList();
+    }
+    if (this->findIndex(newItem) > -1) {
+        throw DuplicateItem();
+    }
     info[length] = newItem;
     length++;
 }
 
 template <class ItemType>
-void UnsortedList<ItemType>::deleteItem(ItemType newItem)
-// Returns true if the List is empty; false otherwise.
-{}
+void UnsortedList<ItemType>::deleteItem(ItemType newItem) {
+    int index = findIndex(newItem);
+    if (index < 0) {
+        throw ItemNotFound();
+    }
+    for (int i = index; i < length - 1; i++) {
+        info[i] = info[i + 1];
+    }
+}
+
+template <class ItemType>
+int UnsortedList<ItemType>::findIndex(ItemType item) const {
+    for (int i = 0; i < length; i++) {
+        if (info[i] == item) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 template <class ItemType>
 int UnsortedList<ItemType>::getLength() const
 // Returns true if the List is empty; false otherwise.
 {
-    return 0;
+    return length;
 }
 
 template <class ItemType>
 ItemType UnsortedList<ItemType>::getAt(int i) const
 // Returns true if the List is empty; false otherwise.
 {
-	return info[0];
+    return info[i];
 }
