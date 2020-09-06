@@ -54,7 +54,7 @@ template <class ItemType>
 bool UnsortedList<ItemType>::isFull() const
 // Returns true if the List is empty; false otherwise.
 {
-    if (length == 0)
+    if (length == Max_Items)
         return true;
     else
         return false;
