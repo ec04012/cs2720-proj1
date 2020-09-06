@@ -62,8 +62,10 @@ bool UnsortedList<ItemType>::isFull() const
 
 template <class ItemType>
 void UnsortedList<ItemType>::putItem(ItemType newItem)
-// Returns true if the List is empty; false otherwise.
-{}
+{
+    info[length] = newItem;
+    length++;
+}
 
 template <class ItemType>
 void UnsortedList<ItemType>::deleteItem(ItemType newItem)
