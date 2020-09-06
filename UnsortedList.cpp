@@ -17,10 +17,12 @@ UnsortedList<ItemType>::UnsortedList()
 template <class ItemType>
 UnsortedList<ItemType>::UnsortedList(int max)
 // constructor
-// Post: Max_Itemms and Length have been initialized.
+// Post: Max_Items and Length have been initialized.
 // The array to hold the list elements has been allocated.
 {
-    // complete the code
+    Max_Items = max;
+    length = 0;
+    info = new ItemType[Max_Items];
 }
 
 template <class ItemType>
