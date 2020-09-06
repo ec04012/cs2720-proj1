@@ -1,0 +1,17 @@
+list is empty
+List Items: 5 7 6 90 
+List Items: 5 7 6 90 1 
+List is full
+Item is not in the list
+List Items: 1 7 6 90 
+List is not full
+List Items: 90 7 6 
+Item is not in the list
+Index is out of range
+List Items: 90 7 
+Duplicate Item, Insertion failed
+Item at index 0 is:90
+List Items: 90 7 
+list is empty
+Item is not in the list
+Unrecognized command
