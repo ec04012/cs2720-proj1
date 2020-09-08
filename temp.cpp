@@ -23,4 +23,6 @@ int main() {
 
 	cout << (s2==s1) << endl;
 
+	cout << endl << "Here" << endl;	
+	cout << s1 << endl << s2 << endl;
 }

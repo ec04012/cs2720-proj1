@@ -35,8 +35,11 @@ bool operator==(Student const& s1, Student const& s2) {
     } else {
         return false;
     }
-
-    if (true) {
-        cout << "Hello" << endl;
-    }
 }
+
+// Operator overloads
+ostream & operator<<(ostream & out, Student const & stu) {
+    out << stu.getID() << " " << stu.getName();
+    return out;
+}
+
