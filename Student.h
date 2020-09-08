@@ -5,22 +5,25 @@
 using namespace std;
 
 class Student {
-  public:
+   public:
     // Class constructors
-    Student();            // Default constructor, uses placeholder name and id
-    Student(int, string); // Param constructor, gets name and id as param
+    Student();             // Default constructor, uses placeholder name and id
+    Student(int const&, string const&);  // Param constructor, gets name and id as param
 
     // No destructor, the default destructor should work
 
     // get methods
-    int getID();
-    string getName();
+    int getID() const;
+    string getName() const;
 
     // set methods
-    void setID(int);
-    void setName(string);
+    void setID(int const&);
+    void setName(string const&);
 
-  private:
+    // Operator overloads
+    friend bool operator==(Student const&, Student const&);
+
+   private:
     int id;
     string name;
 };
