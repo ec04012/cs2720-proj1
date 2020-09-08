@@ -1,9 +1,11 @@
 // Test driver
-#include "UnsortedList.cpp"
-#include "UnsortedList.h"
 #include <fstream>
 #include <iostream>
 #include <string>
+
+#include "Student.h"
+#include "UnsortedList.cpp"
+#include "UnsortedList.h"
 using namespace std;
 
 void testIntegerList();
@@ -14,12 +16,12 @@ int main() {
     cout << "Enter Elements Type\n1 for integer\n2 for Student\n";
     cin >> datatype;
     switch (datatype) {
-    case 1:        
-        testIntegerList();
-        break;
-    case 2:
-        testStudentList();
-        break;
+        case 1:
+            testIntegerList();
+            break;
+        case 2:
+            testStudentList();
+            break;
     }
     //.append any needed code here
     return 0;
@@ -33,7 +35,7 @@ void testIntegerList() {
     inFile.open("intcommands.txt");
     outFile.open("outFile.txt");
     int number;
-    inFile >> command; // read commands from a text file
+    inFile >> command;  // read commands from a text file
 
     while (command != "Quit") {
         try
@@ -75,13 +77,12 @@ void testIntegerList() {
             else if (command == "GetAt") {
                 int index;
                 inFile >> index;
-                outFile << "Item at index " << index
-                        << " is:" << list.getAt(index) << endl;
+                outFile << "Item at index " << index << " is:" << list.getAt(index) << endl;
             } else
                 outFile << "Unrecognized command";
             inFile >> command;
 
-        } // try
+        }  // try
 
         catch (FullList) {
             outFile << "List is full, Insertion failed" << endl;
@@ -103,9 +104,81 @@ void testIntegerList() {
             outFile << "Item is not in the list" << endl;
             inFile >> command;
         }
-    } // while
-} // testIntegerList
+    }  // while
+}  // testIntegerList
 
 void testStudentList() {
     // Add code to test the Student list, similar to testIntegerslist
-} // test StudentList
+    UnsortedList<Student> list(5);
+    string command;
+    ifstream inFile;
+    ofstream outFile;
+    inFile.open("studcommands.txt");
+    outFile.open("outFileStud2.txt");
+    Student stu;
+    string name;
+    int id;
+    inFile >> command;  // read commands from a text file
+
+    while (command != "Quit") {
+        try {
+            if (command == "MakeEmpty")
+                (list.makeEmpty());
+
+            else if (command == "IsEmpty")
+                if (list.isEmpty())
+                    outFile << "list is empty\n";
+                else
+                    outFile << "list is not empty\n";
+            else if (command == "IsFull") {
+                if (list.isFull())
+                    outFile << "List is full\n";
+                else
+                    outFile << "List is not full\n";
+            } else if (command == "PutItem") {
+                inFile >> id;
+                inFile >> name;
+                stu = Student(id, name);
+                list.putItem(stu);
+            } else if (command == "DeleteItem") {
+                inFile >> id;
+                stu = Student(id, "John Smith");
+                list.deleteItem(stu);
+            }
+
+            else if (command == "GetLength")
+                outFile << list.getLength() << "\n";
+            else if (command == "PrintList") {
+                outFile << "List Items: ";
+                Student value;
+                for (int index = 0; index < list.getLength(); index++) {
+                    value = list.getAt(index);
+                    outFile << value << " ";
+                }
+                outFile << "\n";
+            }
+
+            else if (command == "GetAt") {
+                int index;
+                inFile >> index;
+                outFile << "Item at index " << index << " is:" << list.getAt(index) << endl;
+            } else
+                outFile << "Unrecognized command\n";
+
+        }  // try
+
+        catch (FullList) {
+            outFile << "List is full, Insertion failed" << endl;
+        } catch (EmptyList) {
+            outFile << "List is empty" << endl;
+        } catch (DuplicateItem) {
+            outFile << "Duplicate Item, Insertion failed" << endl;
+        } catch (OutofBound) {
+            outFile << "Index is out of range" << endl;
+        } catch (ItemNotFound) {
+            outFile << "Item is not in the list" << endl;
+        }
+
+        inFile >> command;
+    }  // while
+}  // test StudentList
