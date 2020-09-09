@@ -1,6 +1,8 @@
 #ifndef STUDENT
 #define STUDENT
 
+#include <iostream>
+#include <ostream>
 #include <string>
 using namespace std;
 
@@ -21,14 +23,12 @@ class Student {
     void setName(string const &);
 
     // Operator overloads
-    friend bool operator==(Student const &, Student const &);
-    friend ostream &operator<<(ostream &, Student const &);
+    bool operator==(Student &s);
+    friend ostream & operator << (ostream &out, const Student& stu);
 
    private:
     int id;
     string name;
 };
-
-#include "Student.cpp"
 
 #endif

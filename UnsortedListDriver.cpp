@@ -109,12 +109,12 @@ void testIntegerList() {
 
 void testStudentList() {
     // Add code to test the Student list, similar to testIntegerslist
-    UnsortedList<Student> list(5);
+    UnsortedList<Student> list(10);
     string command;
     ifstream inFile;
     ofstream outFile;
     inFile.open("studcommands.txt");
-    outFile.open("outFileStud2.txt");
+    outFile.open("outFile.txt");
     Student stu;
     string name;
     int id;

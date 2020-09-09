@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Student.h"
+#include "Student.cpp"
 using namespace std;
 
 // Used to test Student Class
@@ -24,5 +24,5 @@ int main() {
 	cout << (s2==s1) << endl;
 
 	cout << endl << "Here" << endl;	
-	cout << s1 << endl << s2 << endl;
+	cout << s1 << endl << s2 << endl;	
 }
